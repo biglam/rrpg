@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --ext .js --ext .jsx ./",
+    "start": "webpack-dev-server",
+    "test": "mocha \"src/**/*.spec.js\" --require ./test/testHelper.js --recursive",
+    "test:watch": "mocha \"src/**/*.spec.js\" --require ./test/testHelper.js --recursive --watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,25 @@
   "bugs": {
     "url": "https://github.com/biglam/rrpg/issues"
   },
-  "homepage": "https://github.com/biglam/rrpg#readme"
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "chai": "^4.0.2",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.1.0",
+    "eslint-plugin-react": "^7.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "mocha": "^3.4.2",
+    "path": "^0.12.7",
+    "react-test-renderer": "^15.6.1",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
 }
