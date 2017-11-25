@@ -1,8 +1,6 @@
-export const DIRECTIONS = () => {
-  return { 
-    UP: 'up',
-    DOWN: 'down',
-    LEFT: 'left',
-    RIGHT: 'right' 
-  };
+export const DIRECTIONS = {
+  UP: 'up',
+  DOWN: 'down',
+  LEFT: 'left',
+  RIGHT: 'right' 
 };
