@@ -1,4 +1,5 @@
 import React from 'react';
+import { DIRECTIONS } from '../constants/directions';
 
 export default class MovingDiv extends React.Component {
 
@@ -13,6 +14,20 @@ export default class MovingDiv extends React.Component {
         left: 0
       }
     };
+  }
+
+  handleMovement(direction, amount) {
+    const { position } = this.state;
+
+    let newPosition = position;
+
+    switch (direction) {
+      case DIRECTIONS.UP:
+        newPosition.top = newPosition.top + amount;
+        break;
+    }
+
+    this.setState({ position: newPosition });
   }
 
   render() {
