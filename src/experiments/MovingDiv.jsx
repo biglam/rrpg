@@ -9,8 +9,6 @@ export default class MovingDiv extends React.Component {
     this.state = {
       position: {
         top: 0,
-        right: 0,
-        bottom: 0,
         left: 0
       }
     };
@@ -20,11 +18,21 @@ export default class MovingDiv extends React.Component {
     const { position } = this.state;
 
     let newPosition = position;
-
     switch (direction) {
       case DIRECTIONS.UP:
+        newPosition.top = newPosition.top - amount;
+        break;
+      case DIRECTIONS.DOWN:
         newPosition.top = newPosition.top + amount;
         break;
+      case DIRECTIONS.LEFT:
+        newPosition.left = newPosition.left - amount;
+        break;
+      case DIRECTIONS.RIGHT:
+        newPosition.left = newPosition.left + amount;
+        break;
+      default:
+        newPosition = position;
     }
 
     this.setState({ position: newPosition });
