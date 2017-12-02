@@ -23,6 +23,21 @@ describe('MovingDiv', () => {
     assert.deepEqual(instance.state, initialState);
   });
 
+  describe('#render', () => {
+    let containerDiv;
+    beforeEach(() => {
+      containerDiv = wrapper.find('div').first();
+    });
+
+    it('renders a container div', () => {
+      assert.isTrue(containerDiv.exists());
+    });
+
+    it('container div has expected className', () => {
+      assert.equal(containerDiv.prop('className'), 'moving-div');
+    });
+  });
+
   describe('#handleMovement', () => {
     let expectedState;
     describe('when moving up', () => {
