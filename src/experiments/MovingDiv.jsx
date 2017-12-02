@@ -13,6 +13,15 @@ export default class MovingDiv extends React.Component {
       }
     };
   }
+  componentDidMount() {
+    window.addEventListener('keydown', this.getMovementFromKey);
+  }
+
+  getMovementFromKey(e) {
+    const { key } = e;
+
+    key === 'ArrowUp' &&  this.handleMovement(DIRECTIONS.UP, 10);
+  }
 
   handleMovement(direction, amount) {
     const { position } = this.state;
