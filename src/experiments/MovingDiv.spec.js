@@ -1,8 +1,9 @@
 import React from 'react';
+import sinon from 'sinon';
 import MovingDiv from './MovingDiv';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
-import { DIRECTIONS } from '../constants/directions';
+import { DIRECTIONS, KEYS } from '../constants/directions';
 
 describe('MovingDiv', () => {
   let wrapper, props, initialState, instance;
@@ -69,6 +70,26 @@ describe('MovingDiv', () => {
 
       it('changes state by expected amount', () => {
         assert.deepEqual(instance.state, expectedState);
+      });
+    });
+  });
+
+  describe('#getMovementFromKey', () => {
+    let event, expectedArgs;
+
+    beforeEach(() => {
+      sinon.spy(instance, 'handleMovement');
+      event = { key: KEYS.UP };
+      instance.getMovementFromKey(event);
+    });
+
+    describe('when up pressed', () => {
+      beforeEach(() => {
+        expectedArgs = [[DIRECTIONS.UP, 10]];
+      });
+
+      it('calls handleMovement with expected args', () => {
+        assert.deepEqual(instance.handleMovement.args, expectedArgs);
       });
     });
   });
