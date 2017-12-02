@@ -11,3 +11,5 @@ export const KEYS = {
   LEFT: 'ArrowLeft',
   RIGHT: 'ArrowRight' 
 };
+
+export const KEYBOARD_SPEED = 10;

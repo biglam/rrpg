@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import MovingDiv from './MovingDiv';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
-import { DIRECTIONS, KEYS } from '../constants/directions';
+import { DIRECTIONS, KEYS, KEYBOARD_SPEED } from '../constants/directions';
 
 describe('MovingDiv', () => {
   let wrapper, props, initialState, instance;
@@ -79,13 +79,49 @@ describe('MovingDiv', () => {
 
     beforeEach(() => {
       sinon.spy(instance, 'handleMovement');
-      event = { key: KEYS.UP };
-      instance.getMovementFromKey(event);
     });
 
     describe('when up pressed', () => {
       beforeEach(() => {
-        expectedArgs = [[DIRECTIONS.UP, 10]];
+        expectedArgs = [[DIRECTIONS.UP, KEYBOARD_SPEED]];
+        event = { key: KEYS.UP };
+        instance.getMovementFromKey(event);
+      });
+
+      it('calls handleMovement with expected args', () => {
+        assert.deepEqual(instance.handleMovement.args, expectedArgs);
+      });
+    });
+
+    describe('when down pressed', () => {
+      beforeEach(() => {
+        expectedArgs = [[DIRECTIONS.DOWN, KEYBOARD_SPEED]];
+        event = { key: KEYS.DOWN };
+        instance.getMovementFromKey(event);
+      });
+
+      it('calls handleMovement with expected args', () => {
+        assert.deepEqual(instance.handleMovement.args, expectedArgs);
+      });
+    });
+
+    describe('when left pressed', () => {
+      beforeEach(() => {
+        expectedArgs = [[DIRECTIONS.LEFT, KEYBOARD_SPEED]];
+        event = { key: KEYS.LEFT };
+        instance.getMovementFromKey(event);
+      });
+
+      it('calls handleMovement with expected args', () => {
+        assert.deepEqual(instance.handleMovement.args, expectedArgs);
+      });
+    });
+
+    describe('when right pressed', () => {
+      beforeEach(() => {
+        expectedArgs = [[DIRECTIONS.RIGHT, KEYBOARD_SPEED]];
+        event = { key: KEYS.RIGHT };
+        instance.getMovementFromKey(event);
       });
 
       it('calls handleMovement with expected args', () => {
