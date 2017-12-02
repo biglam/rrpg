@@ -1,5 +1,5 @@
 import React from 'react';
-import { DIRECTIONS } from '../constants/directions';
+import { DIRECTIONS, KEYBOARD_SPEED, KEYS } from '../constants/directions';
 
 export default class MovingDiv extends React.Component {
 
@@ -20,7 +20,11 @@ export default class MovingDiv extends React.Component {
   getMovementFromKey(e) {
     const { key } = e;
 
-    key === 'ArrowUp' &&  this.handleMovement(DIRECTIONS.UP, 10);
+    key === KEYS.UP &&  this.handleMovement(DIRECTIONS.UP, KEYBOARD_SPEED);
+    key === KEYS.DOWN &&  this.handleMovement(DIRECTIONS.DOWN, KEYBOARD_SPEED);
+    key === KEYS.LEFT &&  this.handleMovement(DIRECTIONS.LEFT, KEYBOARD_SPEED);    
+    key === KEYS.RIGHT &&  this.handleMovement(DIRECTIONS.RIGHT, KEYBOARD_SPEED);
+    
   }
 
   handleMovement(direction, amount) {
