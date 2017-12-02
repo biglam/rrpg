@@ -24,7 +24,6 @@ export default class MovingDiv extends React.Component {
     key === KEYS.DOWN &&  this.handleMovement(DIRECTIONS.DOWN, KEYBOARD_SPEED);
     key === KEYS.LEFT &&  this.handleMovement(DIRECTIONS.LEFT, KEYBOARD_SPEED);    
     key === KEYS.RIGHT &&  this.handleMovement(DIRECTIONS.RIGHT, KEYBOARD_SPEED);
-    
   }
 
   handleMovement(direction, amount) {
@@ -53,7 +52,7 @@ export default class MovingDiv extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="moving-div">
         <h1>Hello World</h1>
       </div>);
   }
