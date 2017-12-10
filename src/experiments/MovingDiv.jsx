@@ -12,6 +12,8 @@ export default class MovingDiv extends React.Component {
         left: 0
       }
     };
+
+    this.getMovementFromKey = this.getMovementFromKey.bind(this);
   }
   componentDidMount() {
     window.addEventListener('keydown', this.getMovementFromKey);
@@ -20,10 +22,10 @@ export default class MovingDiv extends React.Component {
   getMovementFromKey(e) {
     const { key } = e;
 
-    key === KEYS.UP &&  this.handleMovement(DIRECTIONS.UP, KEYBOARD_SPEED);
-    key === KEYS.DOWN &&  this.handleMovement(DIRECTIONS.DOWN, KEYBOARD_SPEED);
-    key === KEYS.LEFT &&  this.handleMovement(DIRECTIONS.LEFT, KEYBOARD_SPEED);    
-    key === KEYS.RIGHT &&  this.handleMovement(DIRECTIONS.RIGHT, KEYBOARD_SPEED);
+    key === KEYS.UP && this.handleMovement(DIRECTIONS.UP, KEYBOARD_SPEED);
+    key === KEYS.DOWN && this.handleMovement(DIRECTIONS.DOWN, KEYBOARD_SPEED);
+    key === KEYS.LEFT && this.handleMovement(DIRECTIONS.LEFT, KEYBOARD_SPEED);    
+    key === KEYS.RIGHT && this.handleMovement(DIRECTIONS.RIGHT, KEYBOARD_SPEED);
   }
 
   handleMovement(direction, amount) {
@@ -51,9 +53,19 @@ export default class MovingDiv extends React.Component {
   }
 
   render() {
+    const { left, top } = this.state.position;
+
+    let divStyle = {
+      position: 'absolute',
+      top: top,
+      left: left,
+      border: '5px solid red'
+    };
+
     return (
-      <div className="moving-div">
+      <div className="moving-div" style={divStyle}>
         <h1>Hello World</h1>
+        <p>Current position: `${left}, ${top}` </p>
       </div>);
   }
 }
